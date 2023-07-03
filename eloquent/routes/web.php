@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::delete('/posts/{id}/delete', [PostController::class, 'delete'])->name('posts.delete');
+
+Route::get('/categories/{id}/posts', [PostController::class, 'getPostsByCategory'])->name('categories.posts');
+
 
 Route::get('/', function () {
     return view('welcome');
